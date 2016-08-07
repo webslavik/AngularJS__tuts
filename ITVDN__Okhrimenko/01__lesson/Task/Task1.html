@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html ng-app='itvdnNews'>
+<head>
+    <title>Task 1</title>
+    
+
+   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<style>
+			
+			.news-item {
+				width: 600px;
+				margin-bottom: 15px;
+				padding: 10px;
+				border-radius: 5px;
+				background-color: lightgrey;
+			}
+
+		</style>
+
+</head>
+<body ng-controller='itvdnNewsCtrl'>
+
+	<div class="container">
+		
+		<h1>ITVDN News</h1>
+
+		<div ng-repeat='news in data'>
+			<div class="news-item">
+				<h2>{{news.title}}</h2>
+				<div class="published">{{news.published}}</div>
+				<p class="description">{{news.description}}</p>
+				<a href="{{news.link}}" class='btn btn-primary'>Читать дальше</a>
+			</div>
+		</div>
+		
+	</div>
+
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="model.js"></script>
+	<script>
+		
+		var itvdnNews = angular.module('itvdnNews', []);
+
+		itvdnNews.controller('itvdnNewsCtrl', function($scope) {
+
+			$scope.data = model;
+
+		});
+
+	</script>
+
+</body>
+</html>

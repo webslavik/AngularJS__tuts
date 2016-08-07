@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html ng-app='coursesPage'>
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<style>
+		
+		.yes {
+			color: green;
+		}
+
+		.no {
+			color: red;
+			font-weight: bold;
+		}
+
+	</style>
+
+</head>
+<body ng-controller='coursesListCtrl'>
+	
+	<div class="container">
+				<div class="page-header">
+						<div class="page-header">
+								<h1>
+										Планировщик курсов.
+								</h1>
+								<h3>Пользователь: {{data.user}}. Количество курсов - {{data.courses.length}}</h3>
+						</div>
+				</div>
+				<div class="panel">
+						<div class="input-group">
+								<input class="form-control" ng-model='inputText' />
+								<span class="input-group-btn">
+										<button class="btn btn-default" ng-click='addCourse()'>Добавить</button>
+								</span>
+						</div>
+
+						<table class="table table-hover">
+								<thead>
+										<tr>
+												<th>Курс</th>
+												<th>Пройден</th>
+										</tr>
+								</thead>
+								<tbody>
+										<tr ng-repeat='item in data.courses'>
+												<td>{{item.name}}</td>
+												<td><input type="checkbox" ng-model='item.passed'></td>
+												<td>
+													<span class='{{addClass(item.passed)}}'>
+														{{showText(item.passed)}}
+													</span>
+												</td>
+										</tr>
+										
+								</tbody>
+						</table>
+				</div>
+		</div>
+	
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script>
+
+		var model = {
+			user: 'Eric',
+			courses: [{ name: "HTML, CSS", passed: true },
+                { name: "JavaScript Essential", passed: true },
+                { name: "JavaScript Advanced", passed: true },
+                { name: "HTML5 &amp; CSS3", passed: false },
+                { name: "AngularJS", passed: false }
+               ]
+		};
+
+		var coursesPage = angular.module('coursesPage', []);
+
+		coursesPage.controller('coursesListCtrl', function($scope) {
+
+			$scope.data = model;
+
+			$scope.addCourse = function() {
+
+				$scope.data.courses.push({ 
+					name: $scope.inputText, 
+					passed: false
+				});
+
+				$scope.inputText = '';
+
+			}
+
+			$scope.showText = function(passed) {
+				return passed ? 'Да' : 'Нет';
+			}
+
+			$scope.addClass = function(passed) {
+				return passed ? 'yes' : 'no';
+			}
+
+
+
+		});
+	
+		
+	</script>
+	
+</body>
+</html>

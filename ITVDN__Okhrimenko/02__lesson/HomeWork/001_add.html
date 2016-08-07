@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app='calc'>
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</head>
+<body ng-controller='calcCtrl'>
+
+	<div class="container">
+		
+		<input type="text" ng-model='first'>
+		<input type="text" ng-model='second'>
+
+		<button ng-click='sum()'>+</button>
+		<button ng-click='sub()'>-</button>
+		<button ng-click='mult()'>*</button>
+		<button ng-click='div()'>/</button>
+
+		<div>Результат: <span ng-bind='res'></span></div>
+		
+
+	</div>
+
+	
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script>
+
+		var calc = angular.module('calc', []);
+
+		calc.controller('calcCtrl', function($scope) {
+
+			$scope.first = '';
+			$scope.second = '';
+
+			$scope.res;
+
+			$scope.sum = function() {
+				$scope.res = parseInt($scope.first) + parseInt($scope.second);
+			};
+
+			$scope.sub = function() {
+				$scope.res = parseInt($scope.first) - parseInt($scope.second);
+			};
+
+			$scope.mult = function() {
+				$scope.res = parseInt($scope.first) * parseInt($scope.second);
+			};
+
+			$scope.div = function() {
+				$scope.res = parseInt($scope.first) / parseInt($scope.second);
+			};
+
+
+		});
+	
+		
+	</script>
+	
+</body>
+</html>

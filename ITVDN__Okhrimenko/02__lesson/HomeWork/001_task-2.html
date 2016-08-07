@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html ng-app='questions'>
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</head>
+<body ng-controller='questionsCtrl'>
+
+
+	<div class="container">
+		
+		<h2>Вопросы</h2>
+
+		<div class="">
+			<input type="radio" name='quest' ng-model='radioValue' value='one'>
+			Вопрос №1
+		</div>
+
+		<div class="">
+			<input type="radio" name='quest' ng-model='radioValue' value='two'>
+			Вопрос №2
+		</div>
+
+		<div class="">
+			<input type="radio" name='quest' ng-model='radioValue' value='three'>
+			Вопрос №3
+		</div>
+
+		<div class="">
+			<input type="radio" name='quest' ng-model='radioValue' value='four'>
+			Вопрос №4
+		</div>
+
+		<div class="">
+			<input type="radio" name='quest' ng-model='radioValue' value='five'>
+			Вопрос №5
+		</div>
+
+
+
+		<div ng-switch on='radioValue'>
+
+
+			<div ng-switch-when='one'>
+				<h4>Сколько сторон у квадрата?</h2>
+
+				<div class="one-querstion">
+					<input type="radio" name='one'> 1
+				</div>
+				<div class="one-querstion">
+					<input type="radio" name='one'> 6
+				</div>
+				<div class="one-querstion">
+					<input type="radio" name='one' ng-model='oneRight' value='1'> 4
+				</div>
+				<div class="one-querstion">
+					<input type="radio" name='one'> 3
+				</div>
+
+			</div>
+
+			<div ng-switch-when='two'>
+				<h2>Варианты к вопросу 2</h2>
+			</div>
+			
+			<div ng-switch-when='three'>
+				<h2>Варианты к вопросу 3</h2>
+			</div>
+			
+			<div ng-switch-when='four'>
+				<h2>Варианты к вопросу 4</h2>
+			</div>
+			
+			<div ng-switch-when='five'>
+				<h2>Варианты к вопросу 5</h2>
+			</div>
+			
+			
+
+		</div>
+
+		<button ng-click='test()'>test</button>
+
+		
+	</div>
+
+
+
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script>
+
+		var questions = angular.module('questions', []);
+
+		questions.controller( 'questionsCtrl', function($scope) {
+
+			// выбор вороса
+			$scope.radioValue = '';
+
+
+			// правильные ответы
+			$scope.oneRight;
+			$scope.sum = 0;
+
+
+			$scope.test = function() {
+				$scope.sum += parseInt($scope.oneRight);
+
+				console.log($scope.sum);
+			}
+
+
+
+
+
+
+
+
+		});
+		
+	</script>
+	
+</body>
+</html>
+</html>

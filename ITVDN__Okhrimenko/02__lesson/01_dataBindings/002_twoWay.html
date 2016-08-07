@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app='SampleApp'>
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</head>
+<body>
+	
+	<div ng-controller='SampleAppCtrl'>
+		
+		<h4>Список элементов</h4>
+
+		<ul>
+			<li ng-repeat='item in items'>{{item.name}}</li>
+		</ul>
+
+		<div>
+      Однонаправленная привязка (one way binding) <input type="text" value="{{items[0].name}}" />
+    </div>
+
+    <div>
+			Двунаправленная привязка (two way binding) <input ng-model='items[1].name' />
+    </div>
+
+    <div>
+			Двунаправленная привязка (two way binding) <input ng-model='items[3].name' />
+    </div>
+
+	</div>
+	
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+	<script>
+    var app = angular.module("SampleApp", []);
+
+    app.controller("SampleAppCtrl", function ($scope) {
+        $scope.items = [
+      		{ name: "Item 1", value: "Value 1" },
+          { name: "Item 2", value: "Value 2" },
+          { name: "Item 3", value: "Value 3" },
+          { name: "Item 4", value: "Value 3" }
+         ];
+    });
+  </script>
+	
+		
+	</script>
+	
+</body>
+</html>
