@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='SampleApp'>
+<html ng-app>
 <head>
 	<meta charset="UTF-8">
 	<title>AngularJS</title>
@@ -8,26 +8,18 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 </head>
-<body ng-controller='SampleAppCtrl'>
+<body>
 
 	
-	<!-- <select ng-model="selected" ng-options="item for item in items"></select> -->
-
-	<select ng-model='selected' ng-options='item for item in items'></select>
-
 
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-
 	<script>
-    var app = angular.module("SampleApp", []);
 
-    app.controller("SampleAppCtrl", function ($scope) {
-        $scope.items = ['item 1', 'item 2', 'item 3'];
-        $scope.selected = $scope.items[2];
-    });
-  </script>
+	
+		
+	</script>
 	
 </body>
 </html>

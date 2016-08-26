@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html ng-app='ToDoList'>
+<head>
+		<title>ToDo List (Task2)</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		
+
+</head>
+<body ng-controller='ToDoListCtrl'>
+
+		<div class="container">
+
+				<h3>ToDo List {{test}}</h3>
+
+				<table class="table">
+						<thead>
+								<tr>
+										<th>Name</th>
+										<th>Description</th>
+										<th>Date</th>
+										<th>Completed</th>
+								</tr>
+						</thead>
+						<tr ng-repeat='task in data'>
+								<td>{{task.name}}</td>
+								<td>{{task.duedata}}</td>
+								<td>{{task.description}}</td>
+								<td>{{task.completed}}</td>
+						</tr>
+				</table>
+				
+				<div>
+						<!-- Форма для добавления новых задач -->
+						<div class="form-group">
+								<label for="name">Name</label>
+								<input type="text" class='form-control' ng-model='name'>
+						</div>
+						<div class="form-group">
+								<label for="due">Due Data</label>
+								<input type="text" class='form-control' ng-model='duedata'>
+						</div>
+						<div class="form-group">
+								<label for="comment">Description</label>
+								<textarea name="" class='form-control' ng-model='description'></textarea>
+						</div>
+						<div class="form-group">
+								<label>Completed <input type="checkbox" ng-model='completed'></label>
+						</div>
+
+						<button class='btn' ng-click='addTask(name, duedata, description, comleted)'>Add</button>
+
+				</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+		<script src="todo.js"></script>
+		<script>
+
+				// Добавьте AngularJS контроллер
+				// todoModel.read();
+				// todoModel.data;
+
+				// Не получается решить задачу. Пока добавил возможность добавлять в лист Таски.
+
+
+				angular.module('ToDoList', [])
+						.controller('ToDoListCtrl', function($scope) {
+
+								$scope.data = todoModel._data;
+
+								$scope.addItem = todoModel._addItem;
+
+								$scope.data = [
+									// {name: 'Молоко', duedata: '08.08.16', description: 'Купить срочно', completed: false}
+								];
+
+								$scope.completed = false;
+
+
+								$scope.addTask = function(name, duedate, description, completed) {
+										$scope.data.push({
+												name: $scope.name,
+												duedata: $scope.duedata,
+												description: $scope.description,
+												completed: $scope.completed
+										});
+								}
+
+
+						})
+
+
+		</script>
+
+</body>
+</html>

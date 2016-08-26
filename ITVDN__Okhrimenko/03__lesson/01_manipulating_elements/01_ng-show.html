@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="SampleApp">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<style>
+		div {
+        display: inline-block;
+        border: 1px solid gray;
+        border-radius: 3px;
+        margin: 14px;
+        padding: 30px;
+    }
+
+    #d1 {
+        background-color: lightgreen;
+    }
+
+    #d2 {
+        background-color: lightblue;
+    }
+
+    #d3 {
+        background-color: lightcoral;
+    }
+	</style>
+
+</head>
+<body ng-controller="SampleAppCtrl">
+
+	<div>
+      <input type="checkbox" ng-model='showElem1'/> Show Element 1<br />
+      <input type="checkbox" ng-model='showElem2'/> Show Element 2<br />
+      <input type="checkbox" ng-model='showElem3'/> Show Element 3
+  </div>
+
+  <div id="d1" ng-show='showElem1'>Element 1</div>
+  <div id="d2" ng-show='showElem2'>Element 2</div>
+  <div id="d3" ng-show='showElem3'>Element 3</div>
+
+	
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script>
+
+	var app = angular.module("SampleApp", []);
+
+  app.controller("SampleAppCtrl", function ($scope) {
+
+  	$scope.showElem1 = false;
+  	$scope.showElem2 = false;
+  	$scope.showElem3 = false;
+      
+  });
+
+	
+		
+	</script>
+	
+</body>
+</html>
